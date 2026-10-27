@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spotter – Bringing lost pets home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#2b2d33; --surface:#35373e; --ink:#fbf5e1; --muted:#c9c0a8;
+  --sun:#7a5532; --sun-ink:#fbf5e1; --tan:#dcc29a; --line:#4a4c54; --deep:#fbf5e1; --on-deep:#2b2b2d;
+  --head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  --body:"Figtree","Segoe UI",system-ui,sans-serif;
+  color-scheme:dark;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#fbf5e1;--surface:#fffcf0;--ink:#2b2b2d;--muted:#5e5a52;--line:#e6dcc0;--deep:#47474a;--on-deep:#fbf5e1;color-scheme:light}
+}
+:root[data-theme="dark"]{--bg:#fbf5e1;--surface:#fffcf0;--ink:#2b2b2d;--muted:#5e5a52;--line:#e6dcc0;--deep:#47474a;--on-deep:#fbf5e1;color-scheme:light}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--tan);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--head);line-height:1.08;margin:0 0 .5em;letter-spacing:-.01em}
+h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:800}
+h2{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800}
+h3{font-size:1.25rem;font-weight:600}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font:800 1.4rem var(--head);text-decoration:none}
+.brand svg{width:36px;height:36px}
+nav{display:flex;gap:6px;align-items:center}
+nav a{text-decoration:none;padding:8px 12px;border-radius:999px;font-weight:600;font-size:.95rem}
+nav a:hover,nav a[aria-current]{background:var(--line)}
+nav a.pill{background:var(--sun);color:var(--sun-ink)}
+nav a.pill:hover{background:var(--sun);filter:brightness(1.05)}
+.btn{display:inline-block;text-decoration:none;font:600 1rem var(--body);padding:14px 24px;border-radius:999px;border:2px solid var(--ink);cursor:pointer;background:transparent;color:var(--ink)}
+.btn.primary{background:var(--sun);border-color:var(--sun);color:var(--sun-ink)}
+.btn:hover{transform:translateY(-1px)}
+.hero{padding:56px 0 72px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero p.lead{font-size:1.25rem;max-width:34em;color:var(--muted)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.dogwrap{position:relative;aspect-ratio:1;max-width:420px;width:100%;justify-self:center}
+.dogwrap .blob{position:absolute;inset:0;background:var(--tan);border-radius:46% 54% 40% 60%/55% 45% 55% 45%}
+.dogwrap svg{position:relative;width:100%;height:100%;animation:settle .9s ease-out both}
+@keyframes settle{from{transform:translateY(18px) rotate(-3deg);opacity:0}to{transform:none;opacity:1}}
+.sec{padding:72px 0}
+.sec.alt{background:var(--surface);border-block:1px solid var(--line)}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:32px}
+.three > div{border-left:4px solid var(--sun);padding-left:18px}
+.three p{margin:0;color:var(--muted)}
+.prose{max-width:42em}
+.prose p{color:var(--muted)}
+.prose p.lead{font-size:1.25rem}
+.prose strong{color:var(--ink)}
+.stack{display:grid;gap:32px;max-width:42em;margin-top:40px}
+.stack > div{border-left:4px solid var(--sun);padding-left:18px}
+.stack p{margin:0;color:var(--muted)}
+.goal{font:800 clamp(1.3rem,3vw,1.75rem)/1.25 var(--head);max-width:26em;margin:48px 0 0}
+.mapcard{background:var(--surface);border:2px solid var(--ink);border-radius:20px;padding:28px;margin-top:28px}
+.alt .mapcard{background:var(--bg)}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+input[type=text]{flex:1 1 220px;font:inherit;padding:13px 18px;border-radius:999px;border:2px solid var(--line);background:var(--surface);color:var(--ink)}
+.alt input[type=text]{background:var(--surface)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
+.chip{font:600 .95rem var(--body);padding:8px 16px;border-radius:999px;border:2px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.qdate{margin:0 0 6px;font-weight:600;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.qtext{font-size:clamp(1.7rem,4.5vw,2.6rem);font-weight:800;text-transform:uppercase;letter-spacing:.04em;margin-bottom:24px}
+.opts{display:grid;gap:12px}
+.opt{display:flex;gap:12px;align-items:baseline;font:600 1.1rem var(--body);text-align:left;padding:16px 20px;border-radius:16px;border:2px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.opt .letter{font:800 1.2rem var(--head);flex:none}
+.opt:hover:not(:disabled){border-color:var(--ink)}
+.opt:disabled{cursor:default}
+.opt.right{background:var(--sun);border-color:var(--sun);color:var(--sun-ink)}
+.opt.wrong{border-color:var(--ink);text-decoration:line-through;opacity:.7}
+.qresult{margin:24px 0 0;color:var(--muted)}
+.qresult:empty{display:none}
+.qresult p{margin:0 0 10px}
+.qhead{font:800 clamp(1.6rem,4vw,2.2rem)/1.1 var(--head);text-transform:uppercase;letter-spacing:.04em;color:var(--ink)}
+.qans{font-weight:600;font-size:1.15rem;color:var(--ink)}
+.look{display:inline-block;font:800 1rem var(--head);text-transform:uppercase;background:var(--tan);color:#2b2b2d;padding:4px 14px;border-radius:999px;transform:rotate(-3deg);margin-right:6px}
+.qmore{font-size:.95rem}
+.status{min-height:1.6em;margin:14px 0 0;color:var(--muted);font-size:.95rem}
+.donate{background:var(--deep);color:var(--on-deep)}
+.donate .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
+.donate p{color:var(--on-deep);opacity:.85;max-width:34em}
+.donate .btn.primary{font-size:1.15rem;padding:18px 32px}
+footer{background:var(--deep);color:var(--on-deep);padding:56px 0 40px;border-top:1px solid var(--line)}
+footer .wrap{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+footer h2{font-size:clamp(2rem,4.5vw,2.8rem)}
+footer p{font-size:1.25rem}
+footer strong{font:800 1.4rem var(--head)}
+footer a{text-underline-offset:4px;font-size:1.35rem;font-weight:600}
+footer small{display:block;margin-top:32px;opacity:.7;grid-column:1/-1}
+@media (max-width:760px){
+  .hero .wrap,.donate .wrap,footer .wrap,.three{grid-template-columns:1fr}
+  .hero{padding-top:32px}.dogwrap{max-width:300px;order:-1}
+  nav a:not(.pill){display:none}
+  .sec{padding:56px 0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.dogwrap svg{animation:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Spotter home">
+      <svg viewBox="0 0 120 120" aria-hidden="true"><use href="#dog"/></svg>Spotter
+    </a>
+    <nav aria-label="Main">
+      <a href="#about">About Us</a>
+      <a href="#map">Find a shelter</a>
+      <a href="#daily">The Daily</a>
+      <a href="#contact">Contact</a>
+      <a class="pill" href="#donate">Donate</a>
+    </nav>
+  </div>
+</header>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="dog" viewBox="0 0 120 120">
+      <path d="M22 30c-12 4-16 28-10 44 3 7 12 7 15-1 3-10 2-30-5-43z" fill="#7a5532"/>
+      <path d="M98 30c12 4 16 28 10 44-3 7-12 7-15-1-3-10-2-30 5-43z" fill="#7a5532"/>
+      <ellipse cx="60" cy="64" rx="38" ry="40" fill="#f4e9cc"/>
+      <path d="M60 24c-16 0-28 8-33 22 6 4 14 4 20-1 3-3 8-3 13 0 6 5 14 5 20 1-5-14-17-22-20-22z" fill="#4a4a4c"/>
+      <circle cx="44" cy="58" r="13" fill="#4a4a4c"/>
+      <circle cx="44" cy="58" r="6.5" fill="#1e1e1e"/><circle cx="46" cy="56" r="2" fill="#fff"/>
+      <circle cx="78" cy="58" r="6.5" fill="#1e1e1e"/><circle cx="80" cy="56" r="2" fill="#fff"/>
+      <ellipse cx="60" cy="82" rx="17" ry="13" fill="#fffcf0"/>
+      <path d="M52 76q8-8 16 0q-2 8-8 9q-6-1-8-9z" fill="#1e1e1e"/>
+      <path d="M60 85v5M52 92q8 6 16 0" stroke="#1e1e1e" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Every pet deserves a way home.</h1>
+      <p class="lead">Spotter connects lost pets with their families and helps stray animals reach local shelters. If you’ve lost a pet or spotted one on the street, you’re in the right place.</p>
+      <div class="cta">
+        <a class="btn primary" href="#map">Find a shelter near me</a>
+        <a class="btn" href="#donate">Support our work</a>
+      </div>
+    </div>
+    <div class="dogwrap"><div class="blob"></div><svg viewBox="0 0 120 120" role="img" aria-label="Spotter logo: a friendly dog with a spot around one eye"><use href="#dog"/></svg></div>
+  </div>
+</section>
+
+<section class="sec alt" id="map">
+  <div class="wrap">
+    <h2>Find shelters near you</h2>
+    <p style="max-width:40em;color:var(--muted)">Pick what you’re looking for, then use your location or type a city or ZIP code. We’ll open the results on Google Maps.</p>
+    <div class="mapcard">
+      <ul class="chips" id="chips" style="margin:0 0 20px" aria-label="What to search for"></ul>
+      <div class="row">
+        <button class="btn primary" id="locate" type="button">Use my location</button>
+        <input type="text" id="place" placeholder="City or ZIP code" aria-label="City or ZIP code" autocomplete="postal-code">
+        <button class="btn" id="go" type="button">Search</button>
+      </div>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec donate" id="donate">
+  <div class="wrap">
+    <div>
+      <h2>Help us bring more pets home</h2>
+      <p>Donations go toward reuniting lost pets with their families and getting strays safely to shelters. Every contribution helps.</p>
+    </div>
+    <div><a class="btn primary" id="gfm" href="https://www.gofundme.com/" target="_blank" rel="noopener noreferrer">Donate on GoFundMe</a></div>
+  </div>
+</section>
+</main>
+
+<main id="daily" hidden>
+<section class="sec">
+  <div class="wrap">
+    <h1>The Daily</h1>
+    <p class="lead" style="max-width:40em;color:var(--muted)">Play, learn, and find out how you can help lost pets and strays in your neighborhood.</p>
+    <h2 style="margin-top:40px">Today’s Question</h2>
+    <p style="max-width:40em;color:var(--muted)">A new question every day. Test what you know, and learn something that could help an animal in need.</p>
+    <div class="mapcard">
+      <p class="qdate" id="qdate"></p>
+      <h3 class="qtext" id="qtext"></h3>
+      <div class="opts" id="opts"></div>
+      <div class="qresult" id="qresult" role="status" aria-live="polite"></div>
+    </div>
+    <div class="cta"><a class="btn" href="#top">Back to home</a></div>
+  </div>
+</section>
+</main>
+
+<main id="about" hidden>
+<section class="sec">
+  <div class="wrap">
+    <h1>About Us</h1>
+    <div class="prose">
+      <p class="lead">Thousands of pets go missing every year, and countless stray animals wander the streets without anyone knowing where they belong. Behind every missing pet is an owner hoping to bring their companion home, and behind every stray is an animal that deserves safety, care, and a chance at finding a loving home. Unfortunately, getting the right information to the right people at the right time can be difficult.</p>
+      <p><strong>Spotter was created to bridge that gap, starting right here in San Ramon, California.</strong> We want to build a stronger, more connected community where residents can work together to find missing pets, report stray animal sightings, and help animals get the care they need. By focusing on San Ramon as our home base, we aim to connect local residents, pet owners, animal shelters, and nearby veterinary clinics so that important information can reach the people best positioned to help.</p>
+      <p>Our goal is to make finding missing pets faster and helping stray animals easier through a community-driven platform that brings sightings and information together in one place. We believe that when neighbors work together and share what they see, even a small report can make a meaningful difference. As Spotter grows, we hope to expand beyond San Ramon and help more communities create safer environments for their animals.</p>
+      <p>Whether you’re searching for a missing pet, have spotted an animal in need, or simply want to make a difference, you can be part of the solution. Every report, shared post, and helping hand brings us one step closer to reuniting lost pets with their families and helping stray animals find safety.</p>
+    </div>
+    <div class="stack">
+      <div><h3>Lost a pet?</h3><p>Losing a pet can be stressful and overwhelming, especially when you don’t know where to begin. Spotter helps you spread the word by sharing important details about your missing pet, including photos, descriptions, and the last known location. The more people who see your report, the greater the chance that someone will recognize your pet and help bring them home. We also encourage owners to contact nearby animal shelters and veterinary clinics to increase their chances of a safe reunion.</p></div>
+      <div><h3>Found a stray?</h3><p>Seeing an animal wandering alone can leave you wondering whether it has a home or needs immediate assistance. Spotter encourages community members to share sightings and relevant details so others nearby can stay informed. If it’s safe to do so, check for identification and contact a local shelter or veterinarian to see whether the animal has a microchip. By reporting what you’ve seen, you can help connect a lost animal with its owner or with someone who can provide the care it needs.</p></div>
+      <div><h3>Want to help?</h3><p>You don’t have to own a pet to make a difference. Every shared post, reported sighting, and act of kindness can help bring attention to an animal in need. You can support Spotter by spreading awareness, following our Instagram, sharing lost-pet reports, and encouraging others to get involved. Together, we can build a more connected community where people look out for animals and work toward bringing more pets safely home.</p></div>
+    </div>
+    <p class="goal">Starting in San Ramon, we’re building a community where no pet has to stay lost longer than necessary.</p>
+    <div class="cta"><a class="btn primary" href="#map">Find a shelter near me</a><a class="btn" href="#top">Back to home</a></div>
+  </div>
+</section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Contact Spotter</h2>
+      <p>Lost or found a pet, or want to get involved? Send us a message.</p>
+    </div>
+    <div>
+      <p><strong>Instagram</strong><br><a href="https://www.instagram.com/spotter.pet/" target="_blank" rel="noopener noreferrer">@spotter.pet</a></p>
+      <p><strong>Email</strong><br><a href="mailto:hello@spotter.pet">hello@spotter.pet</a></p>
+    </div>
+    <small>© 2026 Spotter. Helping lost pets find their way home.</small>
+  </div>
+</footer>
+
+<script>
+var PAGES=["#about","#daily"],home=document.getElementById("top");
+function route(){
+  var page=PAGES.indexOf(location.hash)>-1?location.hash:"";
+  home.hidden=!!page;
+  PAGES.forEach(function(p){document.querySelector(p).hidden=p!==page});
+  [].forEach.call(document.querySelectorAll("nav a"),function(a){
+    if(page&&a.getAttribute("href")===page)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");
+  });
+  if(page){window.scrollTo(0,0);return}
+  var t=location.hash&&document.querySelector(location.hash);
+  if(t)t.scrollIntoView();
+}
+window.addEventListener("hashchange",route);route();
+var QUESTIONS=[
+  {q:"You found a lost dog. What do you do?",o:["Take the animal home","Leave it where you found it and walk away","Try to find its owner or make a post about it on the Spotter app"],a:2,e:"Posting a lost pet will notify others near your location quickly and can help reunite them with their loved ones."},
+  {q:"Your cat slipped out the door and hasn’t come back. What do you do?",o:["Post it as missing on Spotter and search nearby hiding spots","Wait a few weeks and hope it comes home","Assume it’s gone for good"],a:0,e:"Scared cats usually hide close to home. A Spotter post gets your neighbors looking under porches and bushes too."},
+  {q:"You see a dog wandering alone near a busy road. What do you do?",o:["Chase after it","Ignore it, someone else will help","Stay calm, keep a safe distance, and post the sighting on Spotter"],a:2,e:"Chasing can scare a dog into traffic. Sharing where and when you saw it helps the owner know exactly where to look."},
+  {q:"You found a cat with a collar but no tag. What do you do?",o:["Take off the collar and keep the cat","Take it to a vet or shelter to scan for a microchip and post it on Spotter","Leave it outside"],a:1,e:"Vets and shelters can scan for a microchip, and a Spotter post helps if the chip isn’t registered."},
+  {q:"You see a missing-pet post on Spotter for a dog that looks like one on your street. What do you do?",o:["Message the owner with where and when you saw it","Scroll past","Try to catch it and keep it"],a:0,e:"Even a small detail like a street name or time can lead an owner straight to their pet."},
+  {q:"Your dog ran off at the park. What should you do first?",o:["Go home and hope it finds its way back","Wait a week, then start looking","Post it on Spotter with a clear photo and the last-seen location, and call nearby shelters"],a:2,e:"The first few hours matter most. Posting right away puts more eyes on the area while your dog is still close."},
+  {q:"You find a stray that looks hurt. What do you do?",o:["Give it some of your own medicine","Call animal control or an emergency vet, then post it on Spotter","Leave it alone and hope it gets better"],a:1,e:"Never give animals human medicine. Getting professional help fast, then posting, gives the animal the best chance."},
+  {q:"A friend shares a lost-pet post. What do you do?",o:["Share it so more people nearby see it","Ignore it","Just react and move on"],a:0,e:"Every share puts another pair of eyes on the street. You don’t have to own a pet to make a difference."},
+  {q:"You found a lost puppy, but no one has claimed it yet. What do you do?",o:["Keep it as your own","Let it go outside","Bring it to a local shelter and keep your Spotter post up"],a:2,e:"Shelters are one of the first places owners check, and your Spotter post keeps the word spreading in your area."},
+  {q:"You spot the same stray cat in your neighborhood every day. What do you do?",o:["Post a sighting on Spotter so its owner or a rescue can find it","Chase it away","Do nothing"],a:0,e:"It might be someone’s missing pet. Sharing regular sightings helps owners and local rescues track it down."}
+];
+(function(){
+  var now=new Date(),day=Math.floor(Date.UTC(now.getFullYear(),now.getMonth(),now.getDate())/864e5);
+  var item=QUESTIONS[day%QUESTIONS.length],opts=document.getElementById("opts"),res=document.getElementById("qresult");
+  document.getElementById("qdate").textContent="Question for "+now.toLocaleDateString(undefined,{weekday:"long",month:"long",day:"numeric"});
+  document.getElementById("qtext").textContent=item.q;
+  item.o.forEach(function(text,i){
+    var b=document.createElement("button"),l=document.createElement("span");
+    b.type="button";b.className="opt";l.className="letter";l.textContent="ABC"[i]+".";
+    b.appendChild(l);b.appendChild(document.createTextNode(text));
+    b.onclick=function(){
+      [].forEach.call(opts.children,function(btn,j){
+        btn.disabled=true;
+        if(j===item.a)btn.classList.add("right");
+        else if(j===i)btn.classList.add("wrong");
+      });
+      res.innerHTML="";
+      var h=document.createElement("p"),ans=document.createElement("p"),look=document.createElement("p"),tag=document.createElement("span"),more=document.createElement("p");
+      h.className="qhead";h.textContent=i===item.a?"Correct answer!":"Not quite! The correct answer:";
+      ans.className="qans";ans.textContent="ABC"[item.a]+". "+item.o[item.a]+(i===item.a?"!":"");
+      tag.className="look";tag.textContent="Look!";
+      look.appendChild(tag);look.appendChild(document.createTextNode(" "+item.e));
+      more.className="qmore";more.textContent="Come back tomorrow for a new question.";
+      [h,ans,look,more].forEach(function(n){res.appendChild(n)});
+    };
+    opts.appendChild(b);
+  });
+})();
+var TYPES=["Animal shelters","Humane society","Animal control","Emergency vet"];
+var current=0;
+var chips=document.getElementById("chips"),status=document.getElementById("status"),place=document.getElementById("place");
+TYPES.forEach(function(t,i){
+  var li=document.createElement("li"),b=document.createElement("button");
+  b.type="button";b.className="chip";b.textContent=t;b.setAttribute("aria-pressed",i===0);
+  b.onclick=function(){current=i;[].forEach.call(chips.querySelectorAll(".chip"),function(c,j){c.setAttribute("aria-pressed",j===i)})};
+  li.appendChild(b);chips.appendChild(li);
+});
+function openMaps(q){
+  var url="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
+  window.open(url,"_blank","noopener");
+}
+document.getElementById("go").onclick=function(){
+  var v=place.value.trim();
+  if(!v){status.textContent="Enter a city or ZIP code, or use your location.";place.focus();return}
+  status.textContent="Opening "+TYPES[current].toLowerCase()+" near "+v+" in Google Maps.";
+  openMaps(TYPES[current]+" near "+v);
+};
+place.addEventListener("keydown",function(e){if(e.key==="Enter")document.getElementById("go").click()});
+document.getElementById("locate").onclick=function(){
+  if(!navigator.geolocation){status.textContent="Your browser can’t share location. Type a city or ZIP code instead.";return}
+  status.textContent="Finding your location…";
+  navigator.geolocation.getCurrentPosition(function(p){
+    status.textContent="Opening "+TYPES[current].toLowerCase()+" near you in Google Maps.";
+    openMaps(TYPES[current]+" near "+p.coords.latitude.toFixed(5)+","+p.coords.longitude.toFixed(5));
+  },function(){
+    status.textContent="Location is blocked. Allow it in your browser, or type a city or ZIP code instead.";
+  },{timeout:10000});
+};
+</script>
+</body>
+</html>
