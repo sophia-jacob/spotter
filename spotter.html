@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,88 +8,453 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
-:root{
-  --bg:#F0EEC5; --surface:#F0E9BB; --ink:#AD9265; --muted:#AD9265;
-  --sun:#E0D8A4; --sun-ink:#AD9265; --line:#D6CAB6; --deep:#AD9265; --on-deep:#F0EEC5;
-  --head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
-  --body:"Figtree","Segoe UI",system-ui,sans-serif;
-  color-scheme:light;
-  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+:root {
+  --bg: #FFF9E9;
+  --surface: #F8EFD8;
+  --ink: #6F5035;
+  --muted: #876B4A;
+  --sun: #E8D5A8;
+  --sun-ink: #6F5035;
+  --line: #E5D8BD;
+  --deep: #A17B50;
+  --on-deep: #FFF9E9;
+  --head: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Figtree", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){--bg:#F0EEC5;--surface:#F0E9BB;--ink:#AD9265;--muted:#AD9265;--line:#D6CAB6;--deep:#AD9265;--on-deep:#F0EEC5;color-scheme:light}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #FFF9E9;
+    --surface: #F8EFD8;
+    --ink: #6F5035;
+    --muted: #876B4A;
+    --sun: #E8D5A8;
+    --sun-ink: #6F5035;
+    --line: #E5D8BD;
+    --deep: #A17B50;
+    --on-deep: #FFF9E9;
+    color-scheme: light;
+  }
 }
-:root[data-theme="dark"]{--bg:#F0EEC5;--surface:#F0E9BB;--ink:#AD9265;--muted:#AD9265;--line:#D6CAB6;--deep:#AD9265;--on-deep:#F0EEC5;color-scheme:light}
-html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
-*,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body)}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
-h1,h2,h3{font-family:var(--head);line-height:1.08;margin:0 0 .5em;letter-spacing:-.01em}
-h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:800}
-h2{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:800}
-h3{font-size:1.25rem;font-weight:600}
-.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.brand{display:flex;align-items:center;gap:10px;font:800 1.4rem var(--head);text-decoration:none}
-.brand svg{width:36px;height:36px}
-nav{display:flex;gap:6px;align-items:center}
-nav a{text-decoration:none;padding:8px 12px;border-radius:999px;font-weight:600;font-size:.95rem}
-nav a:hover{background:var(--line)}
-nav a.pill{background:var(--sun);color:var(--sun-ink)}
-nav a.pill:hover{background:var(--sun);filter:brightness(1.05)}
-.btn{display:inline-block;text-decoration:none;font:600 1rem var(--body);padding:14px 24px;border-radius:999px;border:2px solid var(--ink);cursor:pointer;background:transparent;color:var(--ink)}
-.btn.primary{background:var(--sun);border-color:var(--sun);color:var(--sun-ink)}
-.btn:hover{transform:translateY(-1px)}
-.hero{padding:56px 0 72px}
-.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-.hero p.lead{font-size:1.25rem;max-width:34em;color:var(--muted)}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.dogwrap{position:relative;aspect-ratio:1;max-width:420px;width:100%;justify-self:center}
-.dogwrap .blob{position:absolute;inset:0;background:var(--sun);border-radius:46% 54% 40% 60%/55% 45% 55% 45%}
-.dogwrap svg{position:relative;width:100%;height:100%;animation:settle .9s ease-out both}
-@keyframes settle{from{transform:translateY(18px) rotate(-3deg);opacity:0}to{transform:none;opacity:1}}
-.sec{padding:72px 0}
-.sec.alt{background:var(--surface);border-block:1px solid var(--line)}
-.three{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:32px}
-.three > div{border-left:4px solid var(--sun);padding-left:18px}
-.three p{margin:0;color:var(--muted)}
-.mapcard{background:var(--surface);border:2px solid var(--ink);border-radius:20px;padding:28px;margin-top:28px}
-.alt .mapcard{background:var(--bg)}
-.row{display:flex;flex-wrap:wrap;gap:12px}
-input[type=text]{flex:1 1 220px;font:inherit;padding:13px 18px;border-radius:999px;border:2px solid var(--line);background:var(--surface);color:var(--ink)}
-.alt input[type=text]{background:var(--surface)}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 0;padding:0;list-style:none}
-.chip{font:600 .95rem var(--body);padding:8px 16px;border-radius:999px;border:2px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
-.chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-.status{min-height:1.6em;margin:14px 0 0;color:var(--muted);font-size:.95rem}
-.donate{background:var(--deep);color:var(--on-deep)}
-.donate .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}
-.donate p{color:var(--on-deep);opacity:.85;max-width:34em}
-.donate .btn.primary{font-size:1.15rem;padding:18px 32px}
-footer{background:var(--deep);color:var(--on-deep);padding:56px 0 40px;border-top:1px solid var(--line)}
-footer .wrap{display:grid;grid-template-columns:1fr 1fr;gap:32px}
-footer h2{font-size:1.5rem}
-footer a{text-underline-offset:3px}
-footer small{display:block;margin-top:32px;opacity:.7;grid-column:1/-1}
-@media (max-width:760px){
-  .hero .wrap,.donate .wrap,footer .wrap,.three{grid-template-columns:1fr}
-  .hero{padding-top:32px}.dogwrap{max-width:300px;order:-1}
-  nav a:not(.pill){display:none}
-  .sec{padding:56px 0}
+
+:root[data-theme="dark"] {
+  --bg: #FFF9E9;
+  --surface: #F8EFD8;
+  --ink: #6F5035;
+  --muted: #876B4A;
+  --sun: #E8D5A8;
+  --sun-ink: #6F5035;
+  --line: #E5D8BD;
+  --deep: #A17B50;
+  --on-deep: #FFF9E9;
+  color-scheme: light;
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.dogwrap svg{animation:none}}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 400 1.0625rem/1.65 var(--body);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--bg);
+  z-index: 10;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--sun);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+h1, h2, h3 {
+  font-family: var(--head);
+  line-height: 1.08;
+  margin: 0 0 .5em;
+  letter-spacing: -.01em;
+}
+
+h1 {
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 800;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 20;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font: 800 1.4rem var(--head);
+  text-decoration: none;
+}
+
+.brand svg {
+  width: 36px;
+  height: 36px;
+}
+
+nav {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: .95rem;
+}
+
+nav a:hover {
+  background: var(--line);
+}
+
+nav a.pill {
+  background: var(--sun);
+  color: var(--sun-ink);
+}
+
+nav a.pill:hover {
+  background: var(--sun);
+  filter: brightness(1.05);
+}
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  font: 600 1rem var(--body);
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: 2px solid var(--ink);
+  cursor: pointer;
+  background: transparent;
+  color: var(--ink);
+}
+
+.btn.primary {
+  background: var(--sun);
+  border-color: var(--sun);
+  color: var(--sun-ink);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.hero {
+  padding: 56px 0 72px;
+}
+
+.hero .wrap {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero p.lead {
+  font-size: 1.25rem;
+  max-width: 34em;
+  color: var(--muted);
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.dogwrap {
+  position: relative;
+  aspect-ratio: 1;
+  max-width: 420px;
+  width: 100%;
+  justify-self: center;
+}
+
+.dogwrap .blob {
+  position: absolute;
+  inset: 0;
+  background: var(--sun);
+  border-radius: 46% 54% 40% 60% / 55% 45% 55% 45%;
+}
+
+.dogwrap svg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  animation: settle .9s ease-out both;
+}
+
+@keyframes settle {
+  from {
+    transform: translateY(18px) rotate(-3deg);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+.sec {
+  padding: 72px 0;
+}
+
+.sec.alt {
+  background: var(--surface);
+  border-block: 1px solid var(--line);
+}
+
+.three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 32px;
+}
+
+.three > div {
+  border-left: 4px solid var(--sun);
+  padding-left: 18px;
+}
+
+.three p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.mapcard {
+  background: var(--surface);
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  padding: 28px;
+  margin-top: 28px;
+}
+
+.alt .mapcard {
+  background: var(--bg);
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+input[type="text"] {
+  flex: 1 1 220px;
+  font: inherit;
+  padding: 13px 18px;
+  border-radius: 999px;
+  border: 2px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.alt input[type="text"] {
+  background: var(--surface);
+}
+
+input[type="text"]::placeholder {
+  color: var(--muted);
+  opacity: .85;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  font: 600 .95rem var(--body);
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 2px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.chip[aria-pressed="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+.status {
+  min-height: 1.6em;
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.donate {
+  background: var(--deep);
+  color: var(--on-deep);
+}
+
+.donate .wrap {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.donate p {
+  color: var(--on-deep);
+  opacity: .95;
+  max-width: 34em;
+}
+
+.donate .btn.primary {
+  font-size: 1.15rem;
+  padding: 18px 32px;
+  background: var(--sun);
+  border-color: var(--sun);
+  color: var(--ink);
+}
+
+footer {
+  background: var(--deep);
+  color: var(--on-deep);
+  padding: 56px 0 40px;
+  border-top: 1px solid var(--line);
+}
+
+footer .wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+}
+
+footer h2 {
+  font-size: 1.5rem;
+}
+
+footer a {
+  text-underline-offset: 3px;
+}
+
+footer small {
+  display: block;
+  margin-top: 32px;
+  opacity: .85;
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 760px) {
+  .hero .wrap,
+  .donate .wrap,
+  footer .wrap,
+  .three {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 32px;
+  }
+
+  .dogwrap {
+    max-width: 300px;
+    order: -1;
+  }
+
+  nav a:not(.pill) {
+    display: none;
+  }
+
+  .sec {
+    padding: 56px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .dogwrap svg {
+    animation: none;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+}
 </style>
 </head>
+
 <body>
 <header>
   <div class="wrap">
     <a class="brand" href="#top" aria-label="Spotter home">
-      <svg viewBox="0 0 120 120" aria-hidden="true"><use href="#dog"/></svg>Spotter
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <use href="#dog"></use>
+      </svg>
+      Spotter
     </a>
+
     <nav aria-label="Main">
       <a href="#about">Our cause</a>
       <a href="#map">Find a shelter</a>
@@ -101,72 +467,109 @@ footer small{display:block;margin-top:32px;opacity:.7;grid-column:1/-1}
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <symbol id="dog" viewBox="0 0 120 120">
-      <path d="M22 30c-12 4-16 28-10 44 3 7 12 7 15-1 3-10 2-30-5-43z" fill="#c99b7c"/>
-      <path d="M98 30c12 4 16 28 10 44-3 7-12 7-15-1-3-10-2-30 5-43z" fill="#c99b7c"/>
-      <ellipse cx="60" cy="64" rx="38" ry="40" fill="#fbe6cf"/>
-      <path d="M60 24c-16 0-28 8-33 22 6 4 14 4 20-1 3-3 8-3 13 0 6 5 14 5 20 1-5-14-17-22-20-22z" fill="#c99b7c"/>
-      <circle cx="44" cy="58" r="13" fill="#c99b7c"/>
-      <circle cx="44" cy="58" r="6.5" fill="#0f2d3a"/><circle cx="46" cy="56" r="2" fill="#fff"/>
-      <circle cx="78" cy="58" r="6.5" fill="#0f2d3a"/><circle cx="80" cy="56" r="2" fill="#fff"/>
-      <ellipse cx="60" cy="82" rx="17" ry="13" fill="#fff3dc"/>
-      <path d="M52 76q8-8 16 0q-2 8-8 9q-6-1-8-9z" fill="#0f2d3a"/>
-      <path d="M60 85v5M52 92q8 6 16 0" stroke="#0f2d3a" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <path d="M22 30c-12 4-16 28-10 44 3 7 12 7 15-1 3-10 2-30-5-43z" fill="#C6A078"/>
+      <path d="M98 30c12 4 16 28 10 44-3 7-12 7-15-1-3-10-2-30 5-43z" fill="#C6A078"/>
+      <ellipse cx="60" cy="64" rx="38" ry="40" fill="#F8EBD5"/>
+      <path d="M60 24c-16 0-28 8-33 22 6 4 14 4 20-1 3-3 8-3 13 0 6 5 14 5 20 1-5-14-17-22-20-22z" fill="#C6A078"/>
+      <circle cx="44" cy="58" r="13" fill="#C6A078"/>
+      <circle cx="44" cy="58" r="6.5" fill="#6F5035"/>
+      <circle cx="46" cy="56" r="2" fill="#fff"/>
+      <circle cx="78" cy="58" r="6.5" fill="#6F5035"/>
+      <circle cx="80" cy="56" r="2" fill="#fff"/>
+      <ellipse cx="60" cy="82" rx="17" ry="13" fill="#FFF4DE"/>
+      <path d="M52 76q8-8 16 0q-2 8-8 9q-6-1-8-9z" fill="#6F5035"/>
+      <path d="M60 85v5M52 92q8 6 16 0" stroke="#6F5035" stroke-width="2.4" fill="none" stroke-linecap="round"/>
     </symbol>
   </defs>
 </svg>
 
 <main id="top">
-<section class="hero">
-  <div class="wrap">
-    <div>
-      <h1>Every pet deserves a way home.</h1>
-      <p class="lead">Spotter connects lost pets with their families and helps stray animals reach local shelters. If you’ve lost a pet or spotted one on the street, you’re in the right place.</p>
-      <div class="cta">
-        <a class="btn primary" href="#map">Find a shelter near me</a>
-        <a class="btn" href="#donate">Support our work</a>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Every pet deserves a way home.</h1>
+        <p class="lead">
+          Spotter connects lost pets with their families and helps stray animals reach local shelters. If you’ve lost a pet or spotted one on the street, you’re in the right place.
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="#map">Find a shelter near me</a>
+          <a class="btn" href="#donate">Support our work</a>
+        </div>
+      </div>
+
+      <div class="dogwrap">
+        <div class="blob"></div>
+        <svg viewBox="0 0 120 120" role="img" aria-label="Spotter logo: a friendly dog with a spot around one eye">
+          <use href="#dog"></use>
+        </svg>
       </div>
     </div>
-    <div class="dogwrap"><div class="blob"></div><svg viewBox="0 0 120 120" role="img" aria-label="Spotter logo: a friendly dog with a spot around one eye"><use href="#dog"/></svg></div>
-  </div>
-</section>
+  </section>
 
-<section class="sec alt" id="about">
-  <div class="wrap">
-    <h2>What Spotter does</h2>
-    <p style="max-width:40em;color:var(--muted)">Thousands of pets go missing every year, and many strays never get seen by the people who could help. Spotter closes that gap by getting the right information to the right people quickly.</p>
-    <div class="three">
-      <div><h3>Lost a pet?</h3><p>Contact nearby shelters and vets right away, and check them often. Share a clear photo and where your pet was last seen.</p></div>
-      <div><h3>Found a stray?</h3><p>Check for a collar or tag, then take the animal to a vet or shelter to be scanned for a microchip.</p></div>
-      <div><h3>Want to help?</h3><p>Donate, follow our Instagram, or share a lost-pet post. Every share puts another pair of eyes on the street.</p></div>
-    </div>
-  </div>
-</section>
+  <section class="sec alt" id="about">
+    <div class="wrap">
+      <h2>What Spotter does</h2>
+      <p style="max-width:40em;color:var(--muted)">
+        Thousands of pets go missing every year, and many strays never get seen by the people who could help. Spotter closes that gap by getting the right information to the right people quickly.
+      </p>
 
-<section class="sec" id="map">
-  <div class="wrap">
-    <h2>Find shelters near you</h2>
-    <p style="max-width:40em;color:var(--muted)">Pick what you’re looking for, then use your location or type a city or ZIP code. We’ll open the results on Google Maps.</p>
-    <div class="mapcard">
-      <ul class="chips" id="chips" style="margin:0 0 20px" aria-label="What to search for"></ul>
-      <div class="row">
-        <button class="btn primary" id="locate" type="button">Use my location</button>
-        <input type="text" id="place" placeholder="City or ZIP code" aria-label="City or ZIP code" autocomplete="postal-code">
-        <button class="btn" id="go" type="button">Search</button>
+      <div class="three">
+        <div>
+          <h3>Lost a pet?</h3>
+          <p>Contact nearby shelters and vets right away, and check them often. Share a clear photo and where your pet was last seen.</p>
+        </div>
+
+        <div>
+          <h3>Found a stray?</h3>
+          <p>Check for a collar or tag, then take the animal to a vet or shelter to be scanned for a microchip.</p>
+        </div>
+
+        <div>
+          <h3>Want to help?</h3>
+          <p>Donate, follow our Instagram, or share a lost-pet post. Every share puts another pair of eyes on the street.</p>
+        </div>
       </div>
-      <p class="status" id="status" role="status" aria-live="polite"></p>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="sec donate" id="donate">
-  <div class="wrap">
-    <div>
-      <h2>Help us bring more pets home</h2>
-      <p>Donations go toward reuniting lost pets with their families and getting strays safely to shelters. Every contribution helps.</p>
+  <section class="sec" id="map">
+    <div class="wrap">
+      <h2>Find shelters near you</h2>
+      <p style="max-width:40em;color:var(--muted)">
+        Pick what you’re looking for, then use your location or type a city or ZIP code. We’ll open the results on Google Maps.
+      </p>
+
+      <div class="mapcard">
+        <ul class="chips" id="chips" style="margin:0 0 20px" aria-label="What to search for"></ul>
+
+        <div class="row">
+          <button class="btn primary" id="locate" type="button">Use my location</button>
+          <input type="text" id="place" placeholder="City or ZIP code" aria-label="City or ZIP code" autocomplete="postal-code">
+          <button class="btn" id="go" type="button">Search</button>
+        </div>
+
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+      </div>
     </div>
-    <div><a class="btn primary" id="gfm" href="https://www.gofundme.com/" target="_blank" rel="noopener noreferrer">Donate on GoFundMe</a></div>
-  </div>
-</section>
+  </section>
+
+  <section class="sec donate" id="donate">
+    <div class="wrap">
+      <div>
+        <h2>Help us bring more pets home</h2>
+        <p>
+          Donations go toward reuniting lost pets with their families and getting strays safely to shelters. Every contribution helps.
+        </p>
+      </div>
+
+      <div>
+        <a class="btn primary" id="gfm" href="https://www.gofundme.com/" target="_blank" rel="noopener noreferrer">
+          Donate on GoFundMe
+        </a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer id="contact">
@@ -175,45 +578,121 @@ footer small{display:block;margin-top:32px;opacity:.7;grid-column:1/-1}
       <h2>Contact Spotter</h2>
       <p>Lost or found a pet, or want to get involved? Send us a message.</p>
     </div>
+
     <div>
-      <p><strong>Instagram</strong><br><a href="https://www.instagram.com/spotter.pet/" target="_blank" rel="noopener noreferrer">@spotter.pet</a></p>
-      <p><strong>Email</strong><br><a href="mailto:hello@spotter.pet">hello@spotter.pet</a></p>
+      <p>
+        <strong>Instagram</strong><br>
+        <a href="https://www.instagram.com/spotter.pet/" target="_blank" rel="noopener noreferrer">@spotter.pet</a>
+      </p>
+
+      <p>
+        <strong>Email</strong><br>
+        <a href="mailto:hello@spotter.pet">hello@spotter.pet</a>
+      </p>
     </div>
+
     <small>© 2026 Spotter. Helping lost pets find their way home.</small>
   </div>
 </footer>
 
 <script>
-var TYPES=["Animal shelters","Humane society","Animal control","Emergency vet"];
-var current=0;
-var chips=document.getElementById("chips"),status=document.getElementById("status"),place=document.getElementById("place");
-TYPES.forEach(function(t,i){
-  var li=document.createElement("li"),b=document.createElement("button");
-  b.type="button";b.className="chip";b.textContent=t;b.setAttribute("aria-pressed",i===0);
-  b.onclick=function(){current=i;[].forEach.call(chips.querySelectorAll(".chip"),function(c,j){c.setAttribute("aria-pressed",j===i)})};
-  li.appendChild(b);chips.appendChild(li);
+var TYPES = [
+  "Animal shelters",
+  "Humane society",
+  "Animal control",
+  "Emergency vet"
+];
+
+var current = 0;
+
+var chips = document.getElementById("chips");
+var status = document.getElementById("status");
+var place = document.getElementById("place");
+
+TYPES.forEach(function(type, index) {
+  var li = document.createElement("li");
+  var button = document.createElement("button");
+
+  button.type = "button";
+  button.className = "chip";
+  button.textContent = type;
+  button.setAttribute("aria-pressed", index === 0);
+
+  button.onclick = function() {
+    current = index;
+
+    [].forEach.call(
+      chips.querySelectorAll(".chip"),
+      function(chip, chipIndex) {
+        chip.setAttribute("aria-pressed", chipIndex === index);
+      }
+    );
+  };
+
+  li.appendChild(button);
+  chips.appendChild(li);
 });
-function openMaps(q){
-  var url="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
-  window.open(url,"_blank","noopener");
+
+function openMaps(query) {
+  var url =
+    "https://www.google.com/maps/search/?api=1&query=" +
+    encodeURIComponent(query);
+
+  window.open(url, "_blank", "noopener");
 }
-document.getElementById("go").onclick=function(){
-  var v=place.value.trim();
-  if(!v){status.textContent="Enter a city or ZIP code, or use your location.";place.focus();return}
-  status.textContent="Opening "+TYPES[current].toLowerCase()+" near "+v+" in Google Maps.";
-  openMaps(TYPES[current]+" near "+v);
+
+document.getElementById("go").onclick = function() {
+  var value = place.value.trim();
+
+  if (!value) {
+    status.textContent =
+      "Enter a city or ZIP code, or use your location.";
+    place.focus();
+    return;
+  }
+
+  status.textContent =
+    "Opening " + TYPES[current].toLowerCase() +
+    " near " + value + " in Google Maps.";
+
+  openMaps(TYPES[current] + " near " + value);
 };
-place.addEventListener("keydown",function(e){if(e.key==="Enter")document.getElementById("go").click()});
-document.getElementById("locate").onclick=function(){
-  if(!navigator.geolocation){status.textContent="Your browser can’t share location. Type a city or ZIP code instead.";return}
-  status.textContent="Finding your location…";
-  navigator.geolocation.getCurrentPosition(function(p){
-    status.textContent="Opening "+TYPES[current].toLowerCase()+" near you in Google Maps.";
-    openMaps(TYPES[current]+" near "+p.coords.latitude.toFixed(5)+","+p.coords.longitude.toFixed(5));
-  },function(){
-    status.textContent="Location is blocked. Allow it in your browser, or type a city or ZIP code instead.";
-  },{timeout:10000});
+
+place.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    document.getElementById("go").click();
+  }
+});
+
+document.getElementById("locate").onclick = function() {
+  if (!navigator.geolocation) {
+    status.textContent =
+      "Your browser can’t share location. Type a city or ZIP code instead.";
+    return;
+  }
+
+  status.textContent = "Finding your location…";
+
+  navigator.geolocation.getCurrentPosition(
+    function(position) {
+      status.textContent =
+        "Opening " + TYPES[current].toLowerCase() +
+        " near you in Google Maps.";
+
+      openMaps(
+        TYPES[current] + " near " +
+        position.coords.latitude.toFixed(5) + "," +
+        position.coords.longitude.toFixed(5)
+      );
+    },
+    function() {
+      status.textContent =
+        "Location is blocked. Allow it in your browser, or type a city or ZIP code instead.";
+    },
+    { timeout: 10000 }
+  );
 };
 </script>
+
 </body>
 </html>
