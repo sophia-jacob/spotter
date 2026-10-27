@@ -9,17 +9,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#fdeff4; --surface:#fffaf7; --ink:#3b3760; --muted:#6a6588;
---sun:#E0D8A4; --sun-ink:#3b3760; --line:#ecd3e2; --deep:#cfc4f3; --on-deep:#2f2a52;
+  --bg:#F0EEC5; --surface:#F0E9BB; --ink:#AD9265; --muted:#AD9265;
+  --sun:#E0D8A4; --sun-ink:#AD9265; --line:#D6CAB6; --deep:#AD9265; --on-deep:#F0EEC5;
   --head:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
   --body:"Figtree","Segoe UI",system-ui,sans-serif;
   color-scheme:light;
   box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
 }
 @media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){--bg:#262238;--surface:#322d4a;--ink:#f6ecfb;--muted:#c4b9de;--line:#4a4368;--deep:#1b1829;--on-deep:#f6ecfb;color-scheme:dark}
+  :root:not([data-theme="light"]){--bg:#F0EEC5;--surface:#F0E9BB;--ink:#AD9265;--muted:#AD9265;--line:#D6CAB6;--deep:#AD9265;--on-deep:#F0EEC5;color-scheme:light}
 }
-:root[data-theme="dark"]{--bg:#262238;--surface:#322d4a;--ink:#f6ecfb;--muted:#c4b9de;--line:#4a4368;--deep:#1b1829;--on-deep:#f6ecfb;color-scheme:dark}
+:root[data-theme="dark"]{--bg:#F0EEC5;--surface:#F0E9BB;--ink:#AD9265;--muted:#AD9265;--line:#D6CAB6;--deep:#AD9265;--on-deep:#F0EEC5;color-scheme:light}
 html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
 *,*::before,*::after{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body)}
