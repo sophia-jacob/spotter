@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2e9">
+  <meta name="description" content="Meet the team behind Spotter.">
+
+  <title>Meet the Team — Spotter</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,600,25,1;9..144,700,25,1&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper:#f5f2e9;
+      --cream:#fffdf7;
+      --ink:#253a34;
+      --sub:#586961;
+      --orange:#dd694a;
+      --orange-dark:#a9442c;
+      --line:#c9d0c3;
+      --sage:#dfe7d9;
+      --yellow:#efcf83;
+      --serif:'Fraunces',Georgia,serif;
+      --sans:'DM Sans',Arial,sans-serif;
+    }
+
+    * {
+      box-sizing:border-box;
+    }
+
+    html {
+      scroll-behavior:smooth;
+    }
+
+    body {
+      margin:0;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:var(--sans);
+      font-size:16px;
+      line-height:1.55;
+    }
+
+    a {
+      color:inherit;
+    }
+
+    .container {
+      width:min(1192px,calc(100% - 48px));
+      margin-inline:auto;
+    }
+
+    .topbar {
+      background:var(--ink);
+      color:var(--cream);
+      text-align:center;
+      font-size:12px;
+      font-weight:600;
+      letter-spacing:.045em;
+      padding:9px 16px;
+    }
+
+    .dot {
+      color:var(--yellow);
+      padding:0 10px;
+    }
+
+    .site-header {
+      position:sticky;
+      top:0;
+      background:rgba(245,242,233,.97);
+      border-bottom:1px solid var(--line);
+      z-index:20;
+      backdrop-filter:blur(12px);
+    }
+
+    .site-header .container {
+      height:77px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:22px;
+    }
+
+    .brand {
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      text-decoration:none;
+      font-family:var(--serif);
+      font-size:31px;
+      font-weight:700;
+      letter-spacing:-.05em;
+      line-height:1;
+    }
+
+    .brand-mark {
+      height:34px;
+      width:34px;
+      color:var(--orange);
+    }
+
+    .nav {
+      display:flex;
+      align-items:center;
+      gap:28px;
+    }
+
+    .nav a {
+      text-decoration:none;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .nav a:hover {
+      text-decoration:underline;
+      text-underline-offset:5px;
+    }
+
+    .nav-cta {
+      padding:11px 17px;
+      border:1px solid var(--ink);
+    }
+
+    .nav-cta:hover {
+      background:var(--ink);
+      color:var(--cream);
+    }
+
+    .team {
+      padding:100px 0 120px;
+      min-height:75vh;
+    }
+
+    .eyebrow {
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+      color:var(--orange-dark);
+      display:block;
+      margin-bottom:16px;
+    }
+
+    .section-title {
+      font-family:var(--serif);
+      font-weight:700;
+      letter-spacing:-.045em;
+      line-height:1.04;
+      font-size:clamp(45px,6vw,72px);
+      margin:0;
+    }
+
+    .team-intro {
+      max-width:600px;
+      color:var(--sub);
+      font-size:17px;
+      line-height:1.8;
+      margin:25px 0 55px;
+    }
+
+    .team-grid {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .team-card {
+      background:var(--cream);
+      border:1px solid var(--line);
+      padding:30px;
+      transition:transform .2s;
+    }
+
+    .team-card:hover {
+      transform:translateY(-4px);
+    }
+
+    .team-avatar {
+      width:65px;
+      height:65px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:var(--sage);
+      color:var(--ink);
+      font:700 24px var(--serif);
+      margin-bottom:25px;
+    }
+
+    .team-card h3 {
+      font:700 27px/1.15 var(--serif);
+      letter-spacing:-.035em;
+      margin:0 0 8px;
+    }
+
+    .team-role {
+      font-size:11px;
+      font-weight:700;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:var(--orange-dark);
+      margin:0 0 15px;
+    }
+
+    .team-bio {
+      font-size:14px;
+      line-height:1.8;
+      color:var(--sub);
+      margin:0;
+    }
+
+    .contact {
+      background:var(--sage);
+      border-top:1px solid var(--ink);
+      border-bottom:1px solid var(--ink);
+      padding:65px 0;
+    }
+
+    .contact-layout {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .contact h2 {
+      font:700 clamp(35px,4vw,52px)/1.1 var(--serif);
+      margin:0;
+    }
+
+    .contact p {
+      color:var(--sub);
+      font-size:14px;
+    }
+
+    .contact-link {
+      display:flex;
+      justify-content:space-between;
+      border-bottom:1px solid #a3b3a5;
+      padding:15px 0;
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    .footer {
+      padding:27px 0;
+    }
+
+    .footer .container {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+    }
+
+    .footer .brand {
+      font-size:21px;
+    }
+
+    .footer small {
+      font-size:11px;
+      color:var(--sub);
+    }
+
+    @media(max-width:900px) {
+      .team-grid {
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media(max-width:700px) {
+      .container {
+        width:calc(100% - 32px);
+      }
+
+      .site-header .container {
+        height:auto;
+        min-height:65px;
+        flex-wrap:wrap;
+        padding:12px 0;
+      }
+
+      .brand {
+        font-size:26px;
+      }
+
+      .nav {
+        gap:12px;
+        flex-wrap:wrap;
+      }
+
+      .nav a {
+        font-size:11px;
+      }
+
+      .team {
+        padding:70px 0;
+      }
+
+      .team-grid {
+        grid-template-columns:1fr;
+      }
+
+      .contact-layout {
+        grid-template-columns:1fr;
+      }
+
+      .footer .container {
+        flex-wrap:wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    A little help makes a big difference
+    <span class="dot">✳</span>
+    A community resource for lost and found pets
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+
+      <a href="index.html" class="brand">
+        <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
+          <path d="M20 34C8 27 5 21 6 14c1-6 7-9 12-5l2 3 2-3c5-4 11-1 12 5 1 7-2 13-14 20Z" fill="currentColor"/>
+        </svg>
+        spotter<span style="color:var(--orange)">.</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html#how-it-works">What to do</a>
+        <a href="index.html#finder">Find help</a>
+        <a href="index.html#about">Our mission</a>
+        <a href="meet-the-team.html">Meet the team</a>
+        <a class="nav-cta" href="index.html#contact">Get in touch ↗</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section class="team">
+      <div class="container">
+
+        <span class="eyebrow">The people behind Spotter / 04</span>
+
+        <h1 class="section-title">Meet the team.</h1>
+
+        <p class="team-intro">
+          We're the people working behind the scenes to make it easier
+          for neighbors to find help, share information, and bring
+          missing pets home. Get to know the people behind our mission!
+        </p>
+
+        <div class="team-grid">
+
+          <!-- TEAM MEMBER 1 -->
+          <article class="team-card">
+            <div class="team-avatar">01</div>
+            <h3>Team Member Name</h3>
+            <p class="team-role">Founder / Position</p>
+            <p class="team-bio">
+              Add a short introduction about this team member,
+              their background, and their role in Spotter.
+            </p>
+          </article>
+
+          <!-- TEAM MEMBER 2 -->
+          <article class="team-card">
+            <div class="team-avatar">02</div>
+            <h3>Team Member Name</h3>
+            <p class="team-role">Position</p>
+            <p class="team-bio">
+              Add a short introduction about this team member,
+              their background, and their role in Spotter.
+            </p>
+          </article>
+
+          <!-- TEAM MEMBER 3 -->
+          <article class="team-card">
+            <div class="team-avatar">03</div>
+            <h3>Team Member Name</h3>
+            <p class="team-role">Position</p>
+            <p class="team-bio">
+              Add a short introduction about this team member,
+              their background, and their role in Spotter.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="container contact-layout">
+
+        <div>
+          <h2>Good things happen<br>together.</h2>
+          <p>
+            Have a question, an idea, or want to support the mission?
+            Reach out.
+          </p>
+        </div>
+
+        <div>
+          <a class="contact-link"
+             href="mailto:hello@spotter.pet?subject=Hello%20Spotter">
+            Email Spotter ↗
+          </a>
+
+          <a class="contact-link"
+             href="https://www.instagram.com/spotter.pet/"
+             target="_blank"
+             rel="noopener noreferrer">
+            Follow on Instagram ↗
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <a href="index.html" class="brand">spotter.</a>
+      <small>© 2026 Spotter · Helping neighbors help pets.</small>
+    </div>
+  </footer>
+
+</body>
+</html>
