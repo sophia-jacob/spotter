@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2e9">
+
+  <title>How You Can Help — Spotter</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght,SOFT,WONK@9..144,600,25,1;9..144,700,25,1&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper:#f5f2e9;
+      --cream:#fffdf7;
+      --ink:#253a34;
+      --sub:#586961;
+      --orange:#dd694a;
+      --line:#c9d0c3;
+      --sage:#dfe7d9;
+      --yellow:#efcf83;
+      --serif:'Fraunces',Georgia,serif;
+      --sans:'DM Sans',Arial,sans-serif;
+    }
+
+    * {
+      box-sizing:border-box;
+    }
+
+    body {
+      margin:0;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:var(--sans);
+      font-size:16px;
+      line-height:1.55;
+    }
+
+    .container {
+      width:min(1192px,calc(100% - 48px));
+      margin-inline:auto;
+    }
+
+    .topbar {
+      background:var(--ink);
+      color:var(--cream);
+      text-align:center;
+      font-size:12px;
+      font-weight:600;
+      letter-spacing:.045em;
+      padding:9px 16px;
+    }
+
+    .dot {
+      color:var(--yellow);
+      padding:0 10px;
+    }
+
+    .site-header {
+      position:sticky;
+      top:0;
+      background:rgba(245,242,233,.97);
+      border-bottom:1px solid var(--line);
+      z-index:20;
+      backdrop-filter:blur(12px);
+    }
+
+    .site-header .container {
+      height:77px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:22px;
+    }
+
+    .brand {
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      text-decoration:none;
+      font-family:var(--serif);
+      font-size:31px;
+      font-weight:700;
+      letter-spacing:-.05em;
+    }
+
+    .brand-mark {
+      height:34px;
+      width:34px;
+      color:var(--orange);
+    }
+
+    .nav {
+      display:flex;
+      align-items:center;
+      gap:28px;
+    }
+
+    .nav a {
+      text-decoration:none;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .nav a:hover {
+      text-decoration:underline;
+      text-underline-offset:5px;
+    }
+
+    /* Blank page content area */
+    .blank-page {
+      min-height:75vh;
+    }
+
+    .footer {
+      padding:27px 0;
+      border-top:1px solid var(--line);
+    }
+
+    .footer .container {
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+    }
+
+    .footer .brand {
+      font-size:21px;
+    }
+
+    .footer small {
+      font-size:11px;
+      color:var(--sub);
+    }
+
+    @media(max-width:700px) {
+      .container {
+        width:calc(100% - 32px);
+      }
+
+      .site-header .container {
+        height:auto;
+        min-height:65px;
+        flex-wrap:wrap;
+        padding:12px 0;
+      }
+
+      .brand {
+        font-size:26px;
+      }
+
+      .nav {
+        gap:13px;
+        flex-wrap:wrap;
+      }
+
+      .nav a {
+        font-size:11px;
+      }
+
+      .footer .container {
+        flex-wrap:wrap;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topbar">
+    A little help makes a big difference
+    <span class="dot">✳</span>
+    A community resource for lost and found pets
+  </div>
+
+  <header class="site-header">
+    <div class="container">
+
+      <a href="index.html" class="brand">
+        <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
+          <path d="M20 34C8 27 5 21 6 14c1-6 7-9 12-5l2 3 2-3c5-4 11-1 12 5 1 7-2 13-14 20Z" fill="currentColor"/>
+        </svg>
+        spotter<span style="color:var(--orange)">.</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html#about">Our mission</a>
+        <a href="how-you-can-help.html">How you can help</a>
+        <a href="meet-the-team.html">Meet the team</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+    <section class="blank-page">
+      <!-- Page content will be added later -->
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <a href="index.html" class="brand">spotter.</a>
+      <small>© 2026 Spotter · Helping neighbors help pets.</small>
+    </div>
+  </footer>
+
+</body>
+</html>
