@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -131,6 +131,8 @@
       color:var(--cream);
     }
 
+    /* TEAM SECTION */
+
     .team {
       padding:100px 0 120px;
       min-height:75vh;
@@ -180,15 +182,12 @@
       transform:translateY(-4px);
     }
 
-    .team-avatar {
-      width:65px;
-      height:65px;
-      border-radius:50%;
-      display:grid;
-      place-items:center;
+    .team-photo {
+      width:100%;
+      aspect-ratio:1 / 1;
+      object-fit:cover;
+      display:block;
       background:var(--sage);
-      color:var(--ink);
-      font:700 24px var(--serif);
       margin-bottom:25px;
     }
 
@@ -213,6 +212,8 @@
       color:var(--sub);
       margin:0;
     }
+
+    /* CONTACT SECTION */
 
     .contact {
       background:var(--sage);
@@ -247,6 +248,8 @@
       font-weight:700;
     }
 
+    /* FOOTER */
+
     .footer {
       padding:27px 0;
     }
@@ -266,6 +269,8 @@
       font-size:11px;
       color:var(--sub);
     }
+
+    /* RESPONSIVE DESIGN */
 
     @media(max-width:900px) {
       .team-grid {
@@ -327,12 +332,24 @@
 
   <header class="site-header">
     <div class="container">
-      <a href="#top" class="brand" aria-label="Spotter home"><svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M20 34C8 27 5 21 6 14c1-6 7-9 12-5l2 3 2-3c5-4 11-1 12 5 1 7-2 13-14 20Z" fill="currentColor"/><circle cx="13" cy="17" r="2" fill="#f5f2e9"/><circle cx="26" cy="17" r="2" fill="#f5f2e9"/><path d="M18 24h4l-2 2-2-2Z" fill="#f5f2e9"/></svg>spotter<span style="color:var(--orange)">.</span></a>
-<nav class="nav" aria-label="Primary navigation">
-  <a class="nav-hide" href="#finder">Our mission</a>
-    <a href="how-you-can-help.html">How you can help</a>
-  <a href="meet-the-team.html">Meet the team</a>
-</nav>   </div>
+
+      <a href="#top" class="brand" aria-label="Spotter home">
+        <svg class="brand-mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+          <path d="M20 34C8 27 5 21 6 14c1-6 7-9 12-5l2 3 2-3c5-4 11-1 12 5 1 7-2 13-14 20Z" fill="currentColor"/>
+          <circle cx="13" cy="17" r="2" fill="#f5f2e9"/>
+          <circle cx="26" cy="17" r="2" fill="#f5f2e9"/>
+          <path d="M18 24h4l-2 2-2-2Z" fill="#f5f2e9"/>
+        </svg>
+        spotter<span style="color:var(--orange)">.</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="nav-hide" href="#finder">Our mission</a>
+        <a href="how-you-can-help.html">How you can help</a>
+        <a href="meet-the-team.html">Meet the team</a>
+      </nav>
+
+    </div>
   </header>
 
   <main>
@@ -354,36 +371,74 @@
 
           <!-- TEAM MEMBER 1 -->
           <article class="team-card">
-            <div class="team-avatar">01</div>
-            <h3>Team Member Name</h3>
-            <p class="team-role">Founder / Position</p>
-            <p class="team-bio">
-              Add a short introduction about this team member,
-              their background, and their role in Spotter.
-            </p>
+            <img src="blank.png" alt="name" class="team-photo">
+            <h3>Ragini Nagal</h3>
+            <p class="team-role">Founder</p>
           </article>
 
           <!-- TEAM MEMBER 2 -->
           <article class="team-card">
-            <div class="team-avatar">02</div>
-            <h3>Team Member Name</h3>
-            <p class="team-role">Position</p>
-            <p class="team-bio">
-              Add a short introduction about this team member,
-              their background, and their role in Spotter.
-            </p>
+            <img src="ananya.png" alt="name" class="team-photo">
+            <h3>Ananya Ranjan</h3>
+            <p class="team-role">Animal Welfare Lead</p>
           </article>
 
           <!-- TEAM MEMBER 3 -->
           <article class="team-card">
-            <div class="team-avatar">03</div>
-            <h3>Team Member Name</h3>
-            <p class="team-role">Position</p>
-            <p class="team-bio">
-              Add a short introduction about this team member,
-              their background, and their role in Spotter.
-            </p>
+            <img src="rylee.png" alt="name" class="team-photo">
+            <h3>Rylee Li</h3>
+            <p class="team-role">Animal Welfare Officer</p>
           </article>
+
+                    <!-- TEAM MEMBER 10 -->
+          <article class="team-card">
+            <img src="nathan.png" alt="name" class="team-photo">
+            <h3>Naisha Sanghvi</h3>
+            <p class="team-role">Animal Welfare officer</p>
+          </article>
+          
+          <!-- TEAM MEMBER 4 -->
+          <article class="team-card">
+            <img src="raywei.png" alt="name" class="team-photo">
+            <h3>Raywei Yim</h3>
+            <p class="team-role">Marketing & Community Outreach Lead</p>
+          </article>
+
+          <!-- TEAM MEMBER 5 -->
+          <article class="team-card">
+            <img src="asmitha.png" alt="name" class="team-photo">
+            <h3>Asmitha Ottikunta</h3>
+            <p class="team-role">Marketing & Community Outreach Officer</p>
+          </article>
+
+          <!-- TEAM MEMBER 6 -->
+          <article class="team-card">
+            <img src="blank.png" alt="name" class="team-photo">
+            <h3>Krithik Nimmagadda</h3>
+            <p class="team-role">Marketing & Community Outreach Officer</p>
+          </article>
+
+          <!-- TEAM MEMBER 7 -->
+          <article class="team-card">
+            <img src="nishka.png" alt="name" class="team-photo">
+            <h3>Nishka Shah</h3>
+            <p class="team-role">Computer Programming Lead</p>
+          </article>
+
+          <!-- TEAM MEMBER 8 -->
+          <article class="team-card">
+            <img src="sophia.png" alt="name" class="team-photo">
+            <h3>Sophia Jacob</h3>
+            <p class="team-role">Computer Programming Officer</p>
+          </article>
+
+          <!-- TEAM MEMBER 9 -->
+          <article class="team-card">
+            <img src="blank.png" alt="name" class="team-photo">
+            <h3>Ron</h3>
+            <p class="team-role">Computer Programming Officer</p>
+          </article>
+
 
         </div>
       </div>
@@ -428,3 +483,4 @@
 
 </body>
 </html>
+```
